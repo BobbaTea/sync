@@ -17,6 +17,7 @@ app.get('/', (req, res, next) => { res.render('index') })
 // var fs = require("fs");
 var WebSocketServer = require('ws').Server;
 
+var wsPort = 5000;
 var https = require('https');
 var fs = require("fs");
 var httpsServer = https.createServer({
@@ -28,10 +29,7 @@ var wss = new WebSocketServer({ server: httpsServer });
 
 // const uuid = require('uuid');
 
-var wsPort = 5000;
 var listeners = {};
-var httpsServer = https.createServer({}).listen(wsPort);
-var wss = new WebSocketServer({ server: httpsServer });
 wss.on('connection', function (ws) {
   ws.on('message', function (message) {
     res = JSON.parse(message)
