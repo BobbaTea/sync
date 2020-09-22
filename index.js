@@ -2,7 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const path = require('path')
 const app = express()
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const hbs = exphbs.create({
   partialsDir: __dirname + '/views/partials',
 })
