@@ -15,7 +15,7 @@ app.get('/', (req, res, next) => { res.render('index') })
 
 // var https = require('http');
 // var fs = require("fs");
-// var WebSocketServer = require('ws').Server;
+var WebSocketServer = require('ws').Server;
 
 var https = require('https');
 var fs = require("fs");
