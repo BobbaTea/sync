@@ -2,7 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const path = require('path')
 const app = express()
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 const hbs = exphbs.create({
   partialsDir: __dirname + '/views/partials',
 })
@@ -18,11 +18,11 @@ app.get('/', (req, res, next) => { res.render('index') })
 var WebSocketServer = require('ws').Server;
 
 var wsPort = 5000;
-var https = require('https');
+var https = require('http');
 var fs = require("fs");
 var httpsServer = https.createServer({
-  key: fs.readFileSync('./key.pem', 'utf8'),
-  cert: fs.readFileSync('./cert.pem', 'utf8')
+//   key: fs.readFileSync('./key.pem', 'utf8'),
+//   cert: fs.readFileSync('./cert.pem', 'utf8')
 }).listen(wsPort);
 var wss = new WebSocketServer({ server: httpsServer });
 
