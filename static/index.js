@@ -30,7 +30,7 @@ var ws = new WebSocket("ws://abobba.com:5000");
     ws.onmessage = function (evt) {
         // console.log(evt)
         parsed = JSON.parse(evt.data)
-        console.log(parsed)
+        console.log("receiving")
         receive(ctx, parsed.data)
     };
 
@@ -55,7 +55,9 @@ const record = function (stream) {
             data: Array.prototype.slice.call(e.inputBuffer.getChannelData(0)),
             unique: unique
         }
-        console.log(data)
+                console.log("sending")
+
+//         console.log(data)
         ws.send(JSON.stringify(data));
     };
 };
