@@ -23,7 +23,7 @@ var httpsServer = https.createServer({
   key: fs.readFileSync('./key.pem', 'utf8'),
   cert: fs.readFileSync('./cert.pem', 'utf8')
 }).listen(wsPort);
-var wss = new WebSocketServer({ server: httpsServer });
+var wss = new WebSocketServer({ server: httpsServer,   rejectUnauthorized: false });
 
 
 // const uuid = require('uuid');
