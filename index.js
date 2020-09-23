@@ -13,16 +13,15 @@ app.use('/static', express.static('static'));
 app.get('/', (req, res, next) => { res.render('index') })
 
 
-// var https = require('http');
-// var fs = require("fs");
+
 var WebSocketServer = require('ws').Server;
 
 var wsPort = 5000;
-var https = require('http');
+var https = require('https');
 var fs = require("fs");
 var httpsServer = https.createServer({
-//   key: fs.readFileSync('./key.pem', 'utf8'),
-//   cert: fs.readFileSync('./cert.pem', 'utf8')
+  key: fs.readFileSync('./key.pem', 'utf8'),
+  cert: fs.readFileSync('./cert.pem', 'utf8')
 }).listen(wsPort);
 var wss = new WebSocketServer({ server: httpsServer });
 
