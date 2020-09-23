@@ -14,17 +14,17 @@ app.get('/', (req, res, next) => { res.render('index') })
 
 
 
-var WebSocketServer = require('ws').Server;
-
-var wsPort = 5000;
 var https = require('https');
-var fs = require("fs");
-var httpsServer = https.createServer({
-  key: fs.readFileSync('./key.pem', 'utf8'),
-  cert: fs.readFileSync('./cert.pem', 'utf8')
-}).listen(wsPort);
-var wss = new WebSocketServer({ server: httpsServer,   rejectUnauthorized: false });
-
+var ws = require('websocket').server;
+var fs = require('fs');
+var options = {
+key:fs.readFileSync('/sync/key.pem'),
+cert:fs.readFileSync('/sync/cert.pem')
+};
+var server = https.createServer(options,
+function(req,res){res.writeHeader(200);res.end();});
+server.listen(8000);
+var wss = new ws({httpServer:server});
 
 // const uuid = require('uuid');
 
