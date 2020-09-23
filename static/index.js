@@ -18,7 +18,7 @@ document.getElementById("start").addEventListener('click', function () {
 if ("WebSocket" in window) {
     var unique = prompt("Enter a unique name");
 //     var ws = new WebSocket("ws://127.0.0.1:5000");
-var ws = new WebSocket("wss://abobba.com:5000", {rejectUnauthorized: false});
+var ws = new WebSocket("wss://abobba.com:5000");
     ws.onopen = function () {
         data = {
             unique: unique,
