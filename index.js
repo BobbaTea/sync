@@ -23,7 +23,7 @@ cert:fs.readFileSync('/sync/cert.pem')
 };
 var server = https.createServer(options,
 function(req,res){res.writeHeader(200);res.end();});
-server.listen(8000);
+server.listen(5000);
 var wss = new ws({httpServer:server});
 
 // const uuid = require('uuid');
